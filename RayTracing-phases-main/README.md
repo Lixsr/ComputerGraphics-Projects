@@ -9,27 +9,27 @@ The project is organized into phase-specific folders, each containing the source
 ## Phases
 
 - **[Phase 1: Three Spheres](#Phase-1-three-spheres)**  
-  - **Folder**: `Phase_1_ThreeSpheres`  
+  - **Folder**: [Phase_1_ThreeSpheres](Phase_1_ThreeSpheres)
   - Description: Initial implementation rendering a 2D projection of a 3D scene with three spheres (red, green, and blue) and a large yellow sphere as a "floor" using basic ray-sphere intersection.
 
 - **[Phase 2: Specular & Intensity](#phase-2-specular--intensity)**  
-  - **Folder**: `Phase_2_specular&intensity`  
+  - **Folder**: [Phase_2_specular&intensity](Phase_2_specular&intensity)
   - Description: Adds specular reflection (shiny highlights) and improves lighting intensity with ambient, point, and directional light sources.
 
 - **[Phase 3: Shadows](#phase-3-shadows)**  
-  - **Folder**: `Phase_3_shadows`  
+  - **Folder**:  [Phase_3_shadows](Phase_3_shadows)
   - Description: Introduces realistic shadows by computing occlusion of light using ray intersection tests.
 
 - **[Phase 4: Reflections](#phase-4-reflections)**  
-  - **Folder**: `Phase_4_reflections`  
+  - **Folder**: [Phase_4_reflections](Phase_4_reflections)
   - Description: Implements mirror-like reflections on sphere surfaces using recursive ray tracing.
 
 - **[Phase 5: More Shapes](#phase-5-more-shapes)**  
-  - **Folder**: `Phase_5_More_Shapes`  
+  - **Folder**:  [Phase_5_More_Shapes](Phase_5_More_Shapes)
   - Description: Expands the scene to include additional shapes beyond spheres, enhancing scene complexity.
 
 - **[Phase 6: Transparency & Refraction](#phase-6-transparency--refraction)**  
-  - **Folder**: `Phase_6_Transparency&Refraction`  
+  - **Folder**: [Phase_6_Transparency&Refraction](Phase_6_Transparency&Refraction)
   - Description: Adds transparency and refraction effects using Snell's Law, with recursive ray tracing for refracted colors.
 
 ---
