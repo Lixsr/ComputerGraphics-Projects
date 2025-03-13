@@ -6,21 +6,20 @@ Welcome to the repository for my ICS415 (Computer Graphics) projects! This colle
 
 ## Projects
 
+### Project-1: A Ray Tracer in Java
 
-### Project-1: Implement a Ray Tracer Using Any Language/Platform of Your Choice
-
-- **Folder**: [RayTracing-phases-main](RayTracing-phases-main)
+- **Folder**: [RayTracing-Java](RayTracing-Java)
 - **Description**: This project is a phased development of a ray tracer written in Java. It renders a 3D scene with spheres, progressively adding features such as lighting, shadows, reflections, transparency, and refraction. The implementation is divided into multiple phases, each building on the previous one to enhance realism and complexity.
   - **Features**: Includes ambient, point, and directional lighting, diffuse and specular reflections, shadow casting, and optical effects like transparency and refraction using recursive ray tracing.
-  - **How to Explore**: Navigate to the [RayTracing-phases-main](RayTracing-phases-main) folder and refer to the `README.md` inside for detailed instructions on compiling and running the code.
+  - **How to Explore**: Navigate to the [RayTracing-Java](RayTracing-Java) folder and refer to the `README.md` inside for detailed instructions on compiling and running the code.
   - **Prerequisites**: Requires Java Development Kit (JDK) 8 or later.
 
-### Project-2: Write a Ray Tracer in GLSL/HLSL
+### Project-2: A Ray Tracer in GLSL/HLSL
 
-- **Folder**: [RayTracing-GLSL-main](RayTracing-GLSL-main)
+- **Folder**: [RayTracing-GLSL](RayTracing-GLSL)
 - **Description**: This project implements a ray tracer using GLSL (OpenGL Shading Language) or HLSL (High-Level Shading Language), leveraging GPU acceleration for real-time rendering. It focuses on shader-based ray tracing techniques, suitable for graphics applications and game development, as part of the ICS415 curriculum.
   - **Features**: Utilizes GPU shaders to perform ray-sphere intersections, lighting calculations, and basic scene rendering.
-  - **How to Explore**: Navigate to the [RayTracing-GLSL-main](RayTracing-GLSL-main) folder and consult the `README.md` within for setup and execution instructions.
+  - **How to Explore**: Navigate to the [RayTracing-GLSL](RayTracing-GLSL) folder and consult the `README.md` within for setup and execution instructions.
   - **Prerequisites**: Requires a compatible graphics API (e.g., OpenGL or DirectX) and a development environment supporting GLSL/HLSL (e.g., ShaderToy, Unity, or a custom OpenGL setup).
 
 ### Additional Projects
