@@ -6,7 +6,15 @@ Welcome to the repository for my ICS415 (Computer Graphics) projects! This colle
 
 ## Projects
 
-### Project-1: A Ray Tracer in Java
+### Project-1: Ray Tracing in One Weekend
+
+- **Folder**: [Ray-Tracing-in-One-Weekend](Ray-Tracing-in-One-Weekend)
+- **Description**: This project is a phased development of a ray tracer written in Java. It renders a 3D scene with spheres, progressively adding features such as lighting, shadows, reflections, transparency, and refraction. The implementation is divided into multiple phases, each building on the previous one to enhance realism and complexity.
+  - **Features**: Includes ambient, point, and directional lighting, diffuse and specular reflections, shadow casting, and optical effects like transparency and refraction using recursive ray tracing.
+  - **How to Explore**: Navigate to the [Ray-Tracing-in-One-Weekend](Ray-Tracing-in-One-Weekend) folder and refer to the `README.md` inside for detailed instructions on compiling and running the code.
+  - **Prerequisites**: Requires Java Development Kit (JDK) 8 or later.
+
+### Project-1: Computer Graphics from Scratch: A Programmer's Introduction to 3D Rendering here
 
 - **Folder**: [RayTracing-Java](RayTracing-Java)
 - **Description**: This project is a phased development of a ray tracer written in Java. It renders a 3D scene with spheres, progressively adding features such as lighting, shadows, reflections, transparency, and refraction. The implementation is divided into multiple phases, each building on the previous one to enhance realism and complexity.
