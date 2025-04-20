@@ -10,9 +10,16 @@ Welcome to the repository for my ICS415 (Computer Graphics) projects! This colle
 
 - **Folder**: [Ray-Tracing-in-One-Weekend](Ray-Tracing-in-One-Weekend)
 - **Description**: This project is a phased development of a ray tracer written in Java. It renders a 3D scene with spheres, progressively adding features such as lighting, shadows, reflections, transparency, and refraction. The implementation is divided into multiple phases, each building on the previous one to enhance realism and complexity.
+
   - **Features**: Includes ambient, point, and directional lighting, diffuse and specular reflections, shadow casting, and optical effects like transparency and refraction using recursive ray tracing.
   - **How to Explore**: Navigate to the [Ray-Tracing-in-One-Weekend](Ray-Tracing-in-One-Weekend) folder and refer to the `README.md` inside for detailed instructions on compiling and running the code.
   - **Prerequisites**: Requires Java Development Kit (JDK) 8 or later.
+
+  ## 🖼️ Output Preview:
+
+  Below is the final rendered output from the project:
+
+  ![Final Image](Ray-Tracing-in-One-Weekend/Final_Image.png)
 
 ### Project-1: Computer Graphics from Scratch: A Programmer's Introduction to 3D Rendering here
 
@@ -26,9 +33,16 @@ Welcome to the repository for my ICS415 (Computer Graphics) projects! This colle
 
 - **Folder**: [RayTracing-GLSL](RayTracing-GLSL)
 - **Description**: This project implements a ray tracer using GLSL (OpenGL Shading Language) or HLSL (High-Level Shading Language), leveraging GPU acceleration for real-time rendering. It focuses on shader-based ray tracing techniques, suitable for graphics applications and game development, as part of the ICS415 curriculum.
+
   - **Features**: Utilizes GPU shaders to perform ray-sphere intersections, lighting calculations, and basic scene rendering.
   - **How to Explore**: Navigate to the [RayTracing-GLSL](RayTracing-GLSL) folder and consult the `README.md` within for setup and execution instructions.
   - **Prerequisites**: Requires a compatible graphics API (e.g., OpenGL or DirectX) and a development environment supporting GLSL/HLSL (e.g., ShaderToy, Unity, or a custom OpenGL setup).
+
+  ## 🖼️ Output Preview:
+
+  Below is the final rendered output from the project:
+
+  ![Final Image](RayTracing-GLSL/Final-Image.png)
 
 ### Project-3: A 3D Game Engine in Java
 
