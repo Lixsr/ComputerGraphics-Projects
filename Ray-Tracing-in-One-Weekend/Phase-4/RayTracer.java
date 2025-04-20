@@ -1,10 +1,12 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
 
-public class RayTracing {
+public class RayTracer {
   final int WIDTH = 800;
   final int HEIGHT = 800;
   final double VIEWPORT_SIZE = 1;
@@ -13,8 +15,9 @@ public class RayTracing {
   final int MAX_DEPTH = 50;
   double FOCUS_DIST = 10.0;
   double APERTURE = 0.1;
-  Scene scene;
-  HittableList world;
+  HittableList scene;
+  private final List<Sphere> spheres = new ArrayList<>();
+  private final List<Light> lights = new ArrayList<>();
 
   Vector LOOK_FROM = new Vector(13, 2, 3);
   Vector LOOK_AT = new Vector(0, 0, 0);
@@ -23,21 +26,20 @@ public class RayTracing {
   double ASPECT_RATIO = (double) WIDTH / HEIGHT;
   Camera camera = new Camera(LOOK_FROM, LOOK_AT, VUP, FOV, ASPECT_RATIO, APERTURE, FOCUS_DIST);
 
-  public RayTracing() {
-    scene = new Scene();
-    world = generateScene();
-    scene.lights.add(new Light("ambient", 0.2, null, null));
-    scene.lights.add(new Light("point", 0.6, new Vector(2, 1, 0), null));
-    scene.lights.add(new Light("directional", 0.2, null, new Vector(1, 4, 4)));
+  public RayTracer() {
+    scene = generateScene();
+    lights.add(new Light("ambient", 0.2, null, null));
+    lights.add(new Light("point", 0.6, new Vector(2, 1, 0), null));
+    lights.add(new Light("directional", 0.2, null, new Vector(1, 4, 4)));
   }
 
   private static HittableList generateScene() {
-    HittableList world = new HittableList();
+    HittableList scene = new HittableList();
     Random rand = new Random();
 
     // Ground sphere
     Material groundMat = new Lambertian(new Vector(0.5, 0.5, 0.5));
-    world.add(new Sphere(new Vector(0, -1000, 0), 1000, groundMat));
+    scene.add(new Sphere(new Vector(0, -1000, 0), 1000, groundMat));
 
     // Many random small spheres
     for (int a = -11; a < 11; a++) {
@@ -51,26 +53,26 @@ public class RayTracing {
             // diffuse
             Vector albedo = Vector.random(rand).multiply(Vector.random(rand));
             sphereMat = new Lambertian(albedo);
-            world.add(new Sphere(center, 0.2, sphereMat));
+            scene.add(new Sphere(center, 0.2, sphereMat));
           } else if (chooseMat < 0.95) {
             // metal
             Vector albedo = Vector.random(rand, 0.5, 1.0);
             double fuzz = rand.nextDouble() * 0.5;
             sphereMat = new Metal(albedo, fuzz);
-            world.add(new Sphere(center, 0.2, sphereMat));
+            scene.add(new Sphere(center, 0.2, sphereMat));
           } else {
             sphereMat = new Dielectric(1.5);
-            world.add(new Sphere(center, 0.2, sphereMat));
+            scene.add(new Sphere(center, 0.2, sphereMat));
           }
         }
       }
     }
 
-    world.add(new Sphere(new Vector(0, 1, 0), 1.0, new Dielectric(1.5)));
-    world.add(new Sphere(new Vector(-4, 1, 0), 1.0, new Lambertian(new Vector(0.4, 0.2, 0.1))));
-    world.add(new Sphere(new Vector(4, 1, 0), 1.0, new Metal(new Vector(0.7, 0.6, 0.5), 0.0)));
+    scene.add(new Sphere(new Vector(0, 1, 0), 1.0, new Dielectric(1.5)));
+    scene.add(new Sphere(new Vector(-4, 1, 0), 1.0, new Lambertian(new Vector(0.4, 0.2, 0.1))));
+    scene.add(new Sphere(new Vector(4, 1, 0), 1.0, new Metal(new Vector(0.7, 0.6, 0.5), 0.0)));
 
-    return world;
+    return scene;
   }
 
   private Vector randomVector(Random rand) {
@@ -108,7 +110,7 @@ public class RayTracing {
           double u = (i + rand.nextDouble()) * invWidthMinusOne;
           double v = (j + rand.nextDouble()) * invHeightMinusOne;
           Ray rRay = camera.getRay(u, v, rand);
-          Vector sampleColor = rayColor(rRay, world, MAX_DEPTH, rand);
+          Vector sampleColor = rayColor(rRay, scene, MAX_DEPTH, rand);
           r += sampleColor.x;
           g += sampleColor.y;
           b += sampleColor.z;
@@ -135,77 +137,23 @@ public class RayTracing {
     }
   }
 
-  private double computeLighting(Vector point, Vector normal, Vector view, double specular) {
-    double intensity = 0.0;
-
-    for (Light light : scene.lights) {
-      Vector lightVector;
-      if (light.type.equals("ambient")) {
-        intensity += light.intensity;
-        continue;
-      } else if (light.type.equals("point")) {
-        lightVector = light.position.subtract(point);
-      } else {
-        lightVector = light.direction;
-      }
-
-      double normalDotLight = normal.dot(lightVector);
-      if (normalDotLight > 0) {
-        intensity += light.intensity * normalDotLight / (normal.length() * lightVector.length());
-      }
-
-      if (specular != -1) {
-        Vector reflection = normal.multiply(2 * normalDotLight).subtract(lightVector);
-        double reflectionDotView = reflection.dot(view);
-        if (reflectionDotView > 0) {
-          intensity +=
-              light.intensity
-                  * Math.pow(reflectionDotView / (reflection.length() * view.length()), specular);
-        }
-      }
-    }
-    return intensity;
-  }
-
-  private double[] intersectRaySphere(Vector origin, Vector direction, Sphere sphere) {
-    Vector originToCenter = origin.subtract(sphere.center);
-    double directionDot = direction.dot(direction);
-    double originToCenterDotDirection = originToCenter.dot(direction);
-    double originToCenterDotSelf = originToCenter.dot(originToCenter);
-
-    double quadA = directionDot;
-    double quadB = 2 * originToCenterDotDirection;
-    double quadC = originToCenterDotSelf - sphere.radius * sphere.radius;
-    double discriminant = quadB * quadB - 4 * quadA * quadC;
-
-    if (discriminant < 0) {
-      return null;
-    }
-
-    double sqrtDiscriminant = Math.sqrt(discriminant);
-    double invDoubleQuadA = 1 / (2 * quadA);
-    double t1 = (-quadB + sqrtDiscriminant) * invDoubleQuadA;
-    double t2 = (-quadB - sqrtDiscriminant) * invDoubleQuadA;
-    return new double[] {t1, t2};
-  }
-
   private double clamp(double x, double min, double max) {
     if (x < min) return min;
     if (x > max) return max;
     return x;
   }
 
-  private static Vector rayColor(Ray ray, Hittable world, int depth, Random rand) {
+  private static Vector rayColor(Ray ray, Hittable scene, int depth, Random rand) {
     if (depth <= 0) {
       return new Vector(0, 0, 0);
     }
 
     HitRecord hitRecord = new HitRecord();
-    if (world.hit(ray, 0.001, Double.POSITIVE_INFINITY, hitRecord)) {
+    if (scene.hit(ray, 0.001, Double.POSITIVE_INFINITY, hitRecord)) {
       Ray scattered = new Ray();
       Vector attenuation = new Vector();
       if (hitRecord.mat.scatter(ray, hitRecord, attenuation, scattered, rand)) {
-        return attenuation.multiply(rayColor(scattered, world, depth - 1, rand));
+        return attenuation.multiply(rayColor(scattered, scene, depth - 1, rand));
       }
       return new Vector(0, 0, 0);
     }
@@ -216,7 +164,7 @@ public class RayTracing {
   }
 
   public static void main(String[] args) {
-    RayTracing rt = new RayTracing();
+    RayTracer rt = new RayTracer();
     rt.render("Generated_Image.png");
   }
 }

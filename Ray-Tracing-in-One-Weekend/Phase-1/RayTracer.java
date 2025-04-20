@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class RayTracing {
+public class RayTracer {
   final int WIDTH = 800;
   final int HEIGHT = 800;
   final double VIEWPORT_SIZE = 1;
@@ -12,7 +12,7 @@ public class RayTracing {
 
   Sphere[] scene;
 
-  public RayTracing() {
+  public RayTracer() {
     scene =
         new Sphere[] {
           new Sphere(new double[] {0, -1, 3}, 1, new int[] {255, 0, 0}),
@@ -103,7 +103,7 @@ public class RayTracing {
   }
 
   public static void main(String[] args) {
-    RayTracing rt = new RayTracing();
+    RayTracer rt = new RayTracer();
     rt.render("Generated_Image.png");
   }
 }

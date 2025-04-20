@@ -3,26 +3,27 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RayTracing {
+public class RayTracer {
   final int WIDTH = 800;
   final int HEIGHT = 800;
   final double VIEWPORT_SIZE = 1;
   final double PROJECTION_PLANE_D = 1;
   final Color BACKGROUND_COLOR = Color.WHITE;
+  private final List<Sphere> spheres = new ArrayList<>();
+  private final List<Light> lights = new ArrayList<>();
 
-  Scene scene;
+  public RayTracer() {
+    spheres.add(new Sphere(new double[] {0, -1, 3}, 1, new int[] {255, 0, 0}, 500));
+    spheres.add(new Sphere(new double[] {2, 0, 4}, 1, new int[] {0, 0, 255}, 500));
+    spheres.add(new Sphere(new double[] {-2, 0, 4}, 1, new int[] {0, 255, 0}, 10));
+    spheres.add(new Sphere(new double[] {0, -5001, 0}, 5000, new int[] {255, 255, 0}, 1000));
 
-  public RayTracing() {
-    scene = new Scene();
-    scene.spheres.add(new Sphere(new double[] {0, -1, 3}, 1, new int[] {255, 0, 0}, 500));
-    scene.spheres.add(new Sphere(new double[] {2, 0, 4}, 1, new int[] {0, 0, 255}, 500));
-    scene.spheres.add(new Sphere(new double[] {-2, 0, 4}, 1, new int[] {0, 255, 0}, 10));
-    scene.spheres.add(new Sphere(new double[] {0, -5001, 0}, 5000, new int[] {255, 255, 0}, 1000));
-
-    scene.lights.add(new Light("ambient", 0.2, null, null));
-    scene.lights.add(new Light("point", 0.6, new Vector(2, 1, 0), null));
-    scene.lights.add(new Light("directional", 0.2, null, new Vector(1, 4, 4)));
+    lights.add(new Light("ambient", 0.2, null, null));
+    lights.add(new Light("point", 0.6, new Vector(2, 1, 0), null));
+    lights.add(new Light("directional", 0.2, null, new Vector(1, 4, 4)));
   }
 
   public void render(String filename) {
@@ -53,7 +54,7 @@ public class RayTracing {
     double closestT = Double.POSITIVE_INFINITY;
     Sphere closestSphere = null;
 
-    for (Sphere sphere : scene.spheres) {
+    for (Sphere sphere : spheres) {
       double[] tValues = intersectRaySphere(origin, direction, sphere);
       if (tValues == null) continue;
 
@@ -87,7 +88,7 @@ public class RayTracing {
   private double computeLighting(Vector point, Vector normal, Vector view, double specular) {
     double intensity = 0.0;
 
-    for (Light light : scene.lights) {
+    for (Light light : lights) {
       Vector lightVector;
       if (light.type.equals("ambient")) {
         intensity += light.intensity;
@@ -107,7 +108,9 @@ public class RayTracing {
         Vector reflection = normal.multiply(2 * normalDotLight).subtract(lightVector);
         double reflectionDotView = reflection.dot(view);
         if (reflectionDotView > 0) {
-          intensity += light.intensity * Math.pow(reflectionDotView / (reflection.length() * view.length()), specular);
+          intensity +=
+              light.intensity
+                  * Math.pow(reflectionDotView / (reflection.length() * view.length()), specular);
         }
       }
     }
@@ -137,7 +140,7 @@ public class RayTracing {
   }
 
   public static void main(String[] args) {
-    RayTracing rt = new RayTracing();
+    RayTracer rt = new RayTracer();
     rt.render("Generated_Image.png");
   }
 }
