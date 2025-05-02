@@ -1,0 +1,11 @@
+<script>start("c:\\Users\\osama\\Desktop\\Bezier-curve\\.next\\");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("cache","cache",1,0,"0 B",1746128790,"5/1/25, 10:46:30 PM");</script>
+<script>addRow("server","server",1,0,"0 B",1746165644,"5/2/25, 9:00:44 AM");</script>
+<script>addRow("static","static",1,0,"0 B",1746165646,"5/2/25, 9:00:46 AM");</script>
+<script>addRow("types","types",1,0,"0 B",1746165644,"5/2/25, 9:00:44 AM");</script>
+<script>addRow("app-build-manifest.json","app-build-manifest.json",0,308,"308 B",1746166783,"5/2/25, 9:19:43 AM");</script>
+<script>addRow("build-manifest.json","build-manifest.json",0,388,"388 B",1746166783,"5/2/25, 9:19:43 AM");</script>
+<script>addRow("package.json","package.json",0,20,"20 B",1746165642,"5/2/25, 9:00:42 AM");</script>
+<script>addRow("react-loadable-manifest.json","react-loadable-manifest.json",0,480,"480 B",1746166783,"5/2/25, 9:19:43 AM");</script>
+<script>addRow("trace","trace",0,354944,"347 kB",1746166810,"5/2/25, 9:20:10 AM");</script>
