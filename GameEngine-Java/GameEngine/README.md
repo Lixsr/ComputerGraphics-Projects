@@ -1,5 +1,7 @@
 # Game Engine Structure
 
+#### Watch the [Video Demo](https://vimeo.com/1080744426).
+
 ## Introduction
 
 Welcome to the `com.gameengine` project — a Java-based game engine for building interactive 3D games.
@@ -14,14 +16,14 @@ Follow these steps to download and run the project locally using **IntelliJ IDEA
 
 2. **Open in IntelliJ IDEA**
 
-    - Open GameEngine folder with IntelliJ IDEA.
-    - Click **File > Open**, then select the project folder.
-    - Wait for IntelliJ to index and build the project (ensure you have JDK 8+ installed).
+   - Open GameEngine folder with IntelliJ IDEA.
+   - Click **File > Open**, then select the project folder.
+   - Wait for IntelliJ to index and build the project (ensure you have JDK 8+ installed).
 
 3. **Run the Game**
-    - Navigate to `test/TestGame.java` in the Project Explorer.
-    - Right-click the `TestGame` class and select **Run 'TestGame.main()'**.
-    - The game window should open, and you can interact using the controls below.
+   - Navigate to `test/TestGame.java` in the Project Explorer.
+   - Right-click the `TestGame` class and select **Run 'TestGame.main()'**.
+   - The game window should open, and you can interact using the controls below.
 
 ---
 
@@ -29,24 +31,24 @@ Follow these steps to download and run the project locally using **IntelliJ IDEA
 
 - **Movement**:
 
-    - Forward: `W`
-    - Backward: `S`
-    - Left: `A`
-    - Right: `D`
+  - Forward: `W`
+  - Backward: `S`
+  - Left: `A`
+  - Right: `D`
 
 - **Vertical Movement**:
 
-    - Up: `Q`
-    - Down: `E`
+  - Up: `Q`
+  - Down: `E`
 
 - **Camera Rotation**:
 
-    - Use **Mouse** to look around
+  - Use **Mouse** to look around
 
 - **Block Interaction**:
-    - Build Block: **Left Click**
-    - Destroy Block (with animation): **Right Click**
-    - Destroy Block (no animation): `R`
+  - Build Block: **Left Click**
+  - Destroy Block (with animation): **Right Click**
+  - Destroy Block (no animation): `R`
 
 ---
 

@@ -56,11 +56,31 @@ Welcome to the repository for my ICS415 (Computer Graphics) projects! This colle
     - **Build Block**: Left Click
     - **Destroy Block (with animation)**: Right Click
     - **Destroy Block (no animation)**: `R`
-  - **How to Explore**: Navigate to the [GameEngine-Java](GameEngine-Java) folder and refer to the `README.md` inside for full details on engine structure, controls, and functionality.
+  - **How to Explore**:
+    - Watch the [Video Demo](https://vimeo.com/1080744426).
+    - Navigate to the [GameEngine-Java](GameEngine-Java) folder and refer to the `README.md` inside for full details on engine structure, controls, and functionality.
 
-### Additional Projects
+Here’s the updated section with the Bézier Curve Editor added under "Additional Projects":
 
-- Soon!
+---
+
+### Project-4: 🌀 Bézier Curve Editor
+
+- **Folder**: [Bezier-curve](Bezier-curve)
+- **Description**: An interactive Bézier curve editor built with **Next.js**, **Shadcn UI**, and **Tailwind CSS**, enabling users to intuitively create and explore Bézier curves through two distinct modes: _Poly Bézier Curves_ and _Fixed Control Points_. Designed for visual learning and experimentation, this project is ideal for those interested in curve modeling and graphics interfaces.
+
+  - **Features**:
+
+    - Add, move, and delete control points with mouse and keyboard.
+    - Two modes: multiple connected cubic Bézier segments or single higher-order Bézier curve with 3–6 points.
+    - Real-time curve updates and visual feedback with color-coded points.
+
+  - **How to Explore**:
+
+    - Visit the [Live Demo](https://bezier-curve-peach.vercel.app) or watch the [Video Demo](https://vimeo.com/1080742494).
+    - To run locally, navigate to the `bezier-curve` folder and follow the steps in `README.md`.
+
+  - **Prerequisites**: Requires Node.js v16+ and npm v8+.
 
 ---
 

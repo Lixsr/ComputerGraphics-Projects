@@ -7,9 +7,10 @@ An interactive Bézier curve editor built with **Next.js**, **Shadcn UI**, and *
 
 ## 📸 Live Demo
 
-#### Try it on [https://bezier-curve-app.vercel.app](https://bezier-curve-app.vercel.app)
+#### Try it on [https://bezier-curve-peach.vercel.app](https://bezier-curve-peach.vercel.app)
 
 #### Or watch it on [https://vimeo.com/1080742494](https://vimeo.com/1080742494)
+
 [![Demo](thumbnail.png)](https://vimeo.com/1080742494)
 
 ---
